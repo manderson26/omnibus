@@ -73,11 +73,12 @@ describe 'omnibus::_git' do
       # data for the latter.
       ChefSpec::ServerRunner.new(platform: 'solaris2', version: '5.11') do |node|
         node.automatic['platform_version'] = '5.10'
+        node.default['omnibus']['toolchain_name'] = 'omnibus-toolchain'
       end.converge(described_recipe)
     end
 
     it "properly configures git's cacert" do
-      expect(chef_run).to run_execute("git config --global http.sslCAinfo /opt/#{node['omnibus']['toolchain_name']}/embedded/ssl/certs/cacert.pem")
+      expect(chef_run).to run_execute("git config --global http.sslCAinfo /opt/omnibus-toolchain/embedded/ssl/certs/cacert.pem")
         .with_user('omnibus')
     end
   end
