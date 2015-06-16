@@ -39,14 +39,14 @@ end
 # On windows alter the security policy to allow poor passwords
 #
 if windows?
-  fix_pw_file = "c:/users/vagrant/fixpwpol.cmd"
+  fix_pw_file = "c:\\users\\vagrant\\fixpwpol.cmd"
 
   file fix_pw_file do
     action :create
     content <<EOC
-[System Access]
-PasswordComplexity = 0
-[Version]"
+[System Access]\r
+PasswordComplexity = 0\r
+[Version]\r
 signature="$CHICAGO$"
 EOC
   end
