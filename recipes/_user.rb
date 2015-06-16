@@ -52,7 +52,7 @@ EOC
   end
 
   execute "FixSecurityPolicy" do
-    command "secedit /configure /db C:\Windows\security\new.sdb /cfg #{fix_pw_file} /areas SECURITYPOLICY"
+    command "secedit /configure /db C:\\Windows\\security\\new.sdb /cfg #{fix_pw_file} /areas SECURITYPOLICY"
   end
 end
 
